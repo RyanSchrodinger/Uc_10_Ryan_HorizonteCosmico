@@ -9,11 +9,32 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-    ?? throw new InvalidOperationException("Connection string 'DefaultConnection' não encontrada.");
+var connectionString =
+    builder.Configuration.GetConnectionString(
+        "DefaultConnection"
+    )
+    ?? throw new InvalidOperationException(
+        "A conexão DefaultConnection não foi encontrada."
+    );
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<ApplicationDbContext>(
+    options =>
+    {
+        options.UseSqlServer(
+            connectionString,
+            sqlServerOptions =>
+            {
+                sqlServerOptions.EnableRetryOnFailure(
+                    maxRetryCount: 10,
+                    maxRetryDelay:
+                        TimeSpan.FromSeconds(10),
+                    errorNumbersToAdd:
+                        new[] { 40613 }
+                );
+            }
+        );
+    }
+);
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {

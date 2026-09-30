@@ -27,8 +27,9 @@
 <header class="site-header">
     <nav class="site-nav" aria-label="Navegação principal">
         <div class="site-container nav-inner">
+               
             <a class="brand" asp-controller="Home" asp-action="Index" aria-label="Horizonte Cósmico - início">
-                <span class="brand-mark" aria-hidden="true">✦</span>
+                    
                 <span><strong>HORIZONTE CÓSMICO</strong><small>ASTRONOMIA E EXPLORAÇÃO</small></span>
             </a>
 
@@ -85,19 +86,156 @@
     @RenderBody()
 </main>
 
-<footer class="site-footer">
-    <div class="site-container footer-inner">
-        <div>
-            <strong>HORIZONTE CÓSMICO</strong>
-            <p>Astronomia e exploração para todos.</p>
+    <footer class="rodape">
+
+        <div class="container">
+
+            <div class="rodape-conteudo">
+
+
+                <!-- =========================================
+                     MARCA
+                ========================================== -->
+
+                <div class="rodape-marca">
+
+                    <a class="marca marca-rodape"
+                       asp-controller="Home"
+                       asp-action="Index">
+
+                        <img src="~/images/Logo.png"
+                             alt="Horizonte Cósmico"
+                             class="marca-logo" />
+
+                        <div class="marca-informacoes">
+
+                            <strong class="marca-nome">
+                                HORIZONTE CÓSMICO
+                            </strong>
+
+                            <span class="rodape-descricao">
+                                Astronomia e exploração para todos.
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+                <!-- =========================================
+                     EXPLORAR
+                ========================================== -->
+
+                <div class="rodape-coluna">
+
+                    <h3>
+                        EXPLORAR
+                    </h3>
+
+
+                    <a asp-controller="Descobertas"
+                       asp-action="Index">
+
+                        Descobertas
+
+                    </a>
+
+
+                    <a asp-controller="Lancamentos"
+                       asp-action="Index">
+
+                        Lançamentos
+
+                    </a>
+
+
+                    <a asp-controller="Galeria"
+                       asp-action="Index">
+
+                        Galeria espacial
+
+                    </a>
+
+
+                    <a asp-controller="Explorar"
+                       asp-action="Index">
+
+                        Pesquisar
+
+                    </a>
+
+                </div>
+
+
+                <!-- =========================================
+                     INSTITUCIONAL
+                ========================================== -->
+
+                <div class="rodape-coluna">
+
+                    <h3>
+                        INSTITUCIONAL
+                    </h3>
+
+
+                    <a asp-controller="Home"
+                       asp-action="Sobre">
+
+                        Sobre o projeto
+
+                    </a>
+
+
+                    <a asp-controller="Home"
+                       asp-action="Privacidade">
+
+                        Política de Privacidade
+
+                    </a>
+
+                </div>
+
+
+                <!-- =========================================
+                     NAVEGAÇÃO
+                ========================================== -->
+
+                <div class="rodape-coluna">
+
+                    <h3>
+                        NAVEGAÇÃO
+                    </h3>
+
+
+                    <a asp-controller="Home"
+                       asp-action="Index">
+
+                        Voltar ao início ↑
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- =============================================
+                 LINHA INFERIOR
+            ============================================== -->
+
+            <div class="rodape-bottom">
+
+                <span>
+                    © @DateTime.Now.Year Horizonte Cósmico
+                </span>
+
+            </div>
+
         </div>
-        <div class="footer-links">
-            <a asp-controller="Home" asp-action="Privacy">Política de privacidade</a>
-            <a asp-controller="Home" asp-action="Index">Voltar ao início ↑</a>
-        </div>
-    </div>
-    <div class="site-container footer-bottom">© 2026 Horizonte Cósmico</div>
-</footer>
+
+    </footer>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
