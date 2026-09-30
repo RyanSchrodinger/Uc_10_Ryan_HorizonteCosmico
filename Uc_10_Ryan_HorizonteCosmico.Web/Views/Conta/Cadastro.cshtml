@@ -1,0 +1,16 @@
+@model Uc_10_Ryan_HorizonteCosmico.Web.ViewModels.CadastroViewModel
+@{ ViewData["Title"] = "Criar conta"; }
+@section Styles { <link rel="stylesheet" href="~/css/cadastro.css" asp-append-version="true" /> }
+<div class="account-page"><div class="account-card">
+    <div class="account-brand">✦<span>HORIZONTE CÓSMICO</span></div>
+    <span class="eyebrow">NOVO ACESSO</span><h1>Crie sua conta</h1><p class="account-intro">Cadastre seus dados básicos. Depois, confirme o código enviado para o seu e-mail.</p>
+    <form asp-action="Cadastro" method="post">
+        <div asp-validation-summary="ModelOnly" class="validation"></div>
+        <div class="field"><label asp-for="NomeCompleto"></label><input asp-for="NomeCompleto" autocomplete="name" /></div>
+        <div class="field"><label asp-for="Email"></label><input asp-for="Email" autocomplete="email" /></div>
+        <div class="field"><label asp-for="Senha"></label><input asp-for="Senha" autocomplete="new-password" /></div>
+        <div class="field"><label asp-for="ConfirmarSenha"></label><input asp-for="ConfirmarSenha" autocomplete="new-password" /></div>
+        <button class="button-primary button-full" type="submit">Criar conta</button>
+    </form>
+    <p class="account-footer">Já tenho uma conta. <a asp-action="Login">Entrar</a></p>
+</div></div>

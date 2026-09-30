@@ -1,0 +1,11 @@
+@model Uc_10_Ryan_HorizonteCosmico.Web.ViewModels.EditarPerfilViewModel
+@{ ViewData["Title"] = "Editar perfil"; }
+@section Styles { <link rel="stylesheet" href="~/css/editar-perfil.css" asp-append-version="true" /> }
+<div class="profile-page"><div class="site-container narrow-container">
+    <div class="page-heading"><span class="eyebrow">MINHA CONTA</span><h1>Editar perfil</h1><p>Atualize os dados compartilhados pela sua conta.</p></div>
+    <form asp-action="EditarPerfil" method="post" class="profile-form"><div asp-validation-summary="ModelOnly" class="validation"></div>
+        <section class="form-section"><h2>Dados da conta</h2><div class="field"><label asp-for="NomeCompleto"></label><input asp-for="NomeCompleto" autocomplete="name" /></div><div class="field"><label asp-for="Email"></label><input asp-for="Email" autocomplete="email" /><small>Se alterar o e-mail, será necessário confirmar o novo endereço.</small></div></section>
+        <section class="form-section"><h2>Alterar senha</h2><p class="form-help">Preencha apenas se quiser trocar sua senha.</p><div class="field"><label asp-for="SenhaAtual"></label><input asp-for="SenhaAtual" autocomplete="current-password" /></div><div class="field"><label asp-for="NovaSenha"></label><input asp-for="NovaSenha" autocomplete="new-password" /></div><div class="field"><label asp-for="ConfirmarNovaSenha"></label><input asp-for="ConfirmarNovaSenha" autocomplete="new-password" /></div></section>
+        <div class="form-actions"><a class="button-secondary" asp-action="MeuPerfil">Cancelar</a><button class="button-primary" type="submit">Salvar alterações</button></div>
+    </form>
+</div></div>

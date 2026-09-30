@@ -1,0 +1,107 @@
+@using Microsoft.AspNetCore.Identity
+@using Uc_10_Ryan_HorizonteCosmico.Domain.Usuarios
+@inject UserManager<ApplicationUser> UserManager
+@{
+    var usuarioLogado = User.Identity?.IsAuthenticated == true ? await UserManager.GetUserAsync(User) : null;
+    var nomeUsuario = usuarioLogado?.NomeCompleto ?? User.Identity?.Name ?? "Usuário";
+    var partesNome = nomeUsuario.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+    var primeiroNome = partesNome.FirstOrDefault() ?? "Usuário";
+    var inicial = primeiroNome[..1].ToUpperInvariant();
+    var tipoConta = User.IsInRole(RolesSistema.Administrador) ? "Administrador" : "Usuário";
+    var controllerAtual = ViewContext.RouteData.Values["controller"]?.ToString();
+    var acaoAtual = ViewContext.RouteData.Values["action"]?.ToString();
+}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Horizonte Cósmico — astronomia e exploração para todos." />
+    <title>@ViewData["Title"] - Horizonte Cósmico</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Uc_10_Ryan_HorizonteCosmico.Web.styles.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+<header class="site-header">
+    <nav class="site-nav" aria-label="Navegação principal">
+        <div class="site-container nav-inner">
+            <a class="brand" asp-controller="Home" asp-action="Index" aria-label="Horizonte Cósmico - início">
+                <span class="brand-mark" aria-hidden="true">✦</span>
+                <span><strong>HORIZONTE CÓSMICO</strong><small>ASTRONOMIA E EXPLORAÇÃO</small></span>
+            </a>
+
+            <button class="nav-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation" aria-controls="mainNavigation" aria-expanded="false" aria-label="Abrir menu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <div class="collapse nav-menu" id="mainNavigation">
+                <div class="nav-links">
+                    <a class="@(controllerAtual == "Home" && acaoAtual == "Index" ? "active" : null)" asp-controller="Home" asp-action="Index">Início</a>
+                    <a class="@(controllerAtual == "Descobertas" ? "active" : null)" asp-controller="Descobertas" asp-action="Index">Descobertas</a>
+                    <a class="@(controllerAtual == "Lancamentos" ? "active" : null)" asp-controller="Lancamentos" asp-action="Index">Lançamentos</a>
+                    <a class="@(controllerAtual == "Astrofotografias" ? "active" : null)" asp-controller="Astrofotografias" asp-action="Index">Galeria</a>
+                    <a asp-controller="Home" asp-action="Index" asp-fragment="explorar">Explorar</a>
+                </div>
+
+                <div class="nav-account">
+                    @if (User.Identity?.IsAuthenticated == true)
+                    {
+                        <div class="account-menu dropdown">
+                            <button class="account-trigger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="avatar" aria-hidden="true">@inicial</span>
+                                <span class="account-name">@primeiroNome</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end account-dropdown">
+                                <li class="account-dropdown-header"><strong>@nomeUsuario</strong><small>@tipoConta · @usuarioLogado?.Email</small></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" asp-controller="Conta" asp-action="MeuPerfil">Meu perfil</a></li>
+                                <li><a class="dropdown-item" asp-controller="Conta" asp-action="EditarPerfil">Editar perfil</a></li>
+                                @if (User.IsInRole(RolesSistema.Administrador))
+                                {
+                                    <li><a class="dropdown-item" asp-controller="Administracao" asp-action="Index">Painel administrativo</a></li>
+                                }
+                                <li><hr class="dropdown-divider" /></li>
+                                <li>
+                                    <form asp-controller="Conta" asp-action="Logout" method="post">
+                                        <button class="dropdown-item dropdown-logout" type="submit">Sair da conta</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <a class="nav-login" asp-controller="Conta" asp-action="Login">Entrar</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+    @RenderBody()
+</main>
+
+<footer class="site-footer">
+    <div class="site-container footer-inner">
+        <div>
+            <strong>HORIZONTE CÓSMICO</strong>
+            <p>Astronomia e exploração para todos.</p>
+        </div>
+        <div class="footer-links">
+            <a asp-controller="Home" asp-action="Privacy">Política de privacidade</a>
+            <a asp-controller="Home" asp-action="Index">Voltar ao início ↑</a>
+        </div>
+    </div>
+    <div class="site-container footer-bottom">© 2026 Horizonte Cósmico</div>
+</footer>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

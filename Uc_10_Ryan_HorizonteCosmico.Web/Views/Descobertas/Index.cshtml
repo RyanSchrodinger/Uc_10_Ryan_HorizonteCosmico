@@ -1,0 +1,111 @@
+@model Uc_10_Ryan_HorizonteCosmico.Web.ViewModels.ListaDescobertasViewModel
+@{ ViewData["Title"] = "Descobertas"; }
+@section Styles { <link rel="stylesheet" href="~/css/conteudo-publico.css" asp-append-version="true" /> }
+
+<div class="content-page">
+    <div class="site-container">
+        <div class="content-heading">
+            <span class="eyebrow">CIÊNCIA EM DESTAQUE</span>
+            <h1>Últimas descobertas</h1>
+            <p>Explore resultados recentes e consulte os detalhes de cada publicação.</p>
+        </div>
+
+        @if (Model.Destaques.Count > 0)
+        {
+            <section class="featured-section" aria-labelledby="destaques-descobertas">
+                <div class="section-title-row">
+                    <div>
+                        <span class="eyebrow">EM EVIDÊNCIA</span>
+                        <h2 id="destaques-descobertas">Principais descobertas</h2>
+                    </div>
+                    <span class="result-count">@Model.Resultados.Count publicação(ões)</span>
+                </div>
+                <div class="content-grid featured-grid">
+                    @foreach (var item in Model.Destaques)
+                    {
+                        <a class="content-card featured-card" asp-action="Details" asp-route-id="@item.Id">
+                            <div class="card-media @(string.IsNullOrWhiteSpace(item.ImagemCapa) ? "media-placeholder" : null)">
+                                @if (!string.IsNullOrWhiteSpace(item.ImagemCapa))
+                                {
+                                    <img src="@item.ImagemCapa" alt="@item.Titulo" />
+                                }
+                                else
+                                {
+                                    <span>✦</span>
+                                }
+                            </div>
+                            <div class="card-body">
+                                <span class="card-kicker">@item.Categoria · @item.DataDescoberta.ToString("dd MMM yyyy")</span>
+                                <h3>@item.Titulo</h3>
+                                <p>@item.Resumo</p>
+                                <span class="card-link">Ler descoberta →</span>
+                            </div>
+                        </a>
+                    }
+                </div>
+            </section>
+        }
+
+        <section class="content-results" aria-labelledby="todas-descobertas">
+            <div class="section-title-row">
+                <div>
+                    <span class="eyebrow">ARQUIVO</span>
+                    <h2 id="todas-descobertas">Todas as descobertas</h2>
+                </div>
+            </div>
+
+            <form class="content-filters" method="get">
+                <div class="filter-field filter-search">
+                    <label for="busca">Pesquisar</label>
+                    <input id="busca" name="busca" value="@Model.Busca" placeholder="Digite um termo" />
+                </div>
+                <div class="filter-field">
+                    <label for="categoria">Filtrar por categoria</label>
+                    <select id="categoria" name="categoria">
+                        <option value="">Todas as categorias</option>
+                        @foreach (var categoria in Model.Categorias)
+                        {
+                            <option value="@categoria" selected="@(Model.Categoria == categoria)">@categoria</option>
+                        }
+                    </select>
+                </div>
+                <button class="button-primary" type="submit">Aplicar</button>
+                @if (!string.IsNullOrWhiteSpace(Model.Busca) || !string.IsNullOrWhiteSpace(Model.Categoria))
+                {
+                    <a class="button-secondary" asp-action="Index">Limpar</a>
+                }
+            </form>
+
+            @if (Model.Resultados.Count == 0)
+            {
+                <div class="empty-state"><strong>Nenhuma descoberta encontrada.</strong><span>Tente outro termo ou categoria.</span></div>
+            }
+            else
+            {
+                <div class="content-grid">
+                    @foreach (var item in Model.Resultados)
+                    {
+                        <a class="content-card" asp-action="Details" asp-route-id="@item.Id">
+                            <div class="card-media @(string.IsNullOrWhiteSpace(item.ImagemCapa) ? "media-placeholder" : null)">
+                                @if (!string.IsNullOrWhiteSpace(item.ImagemCapa))
+                                {
+                                    <img src="@item.ImagemCapa" alt="@item.Titulo" />
+                                }
+                                else
+                                {
+                                    <span>✦</span>
+                                }
+                            </div>
+                            <div class="card-body">
+                                <span class="card-kicker">@item.Categoria · @item.DataDescoberta.ToString("dd/MM/yyyy")</span>
+                                <h3>@item.Titulo</h3>
+                                <p>@item.Resumo</p>
+                                <span class="card-link">Ver detalhes →</span>
+                            </div>
+                        </a>
+                    }
+                </div>
+            }
+        </section>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+@model Uc_10_Ryan_HorizonteCosmico.Web.ViewModels.TrocarEmailViewModel
+@{ ViewData["Title"] = "Trocar e-mail"; }
+@section Styles { <link rel="stylesheet" href="~/css/trocar-email.css" asp-append-version="true" /> }
+<div class="account-page"><div class="account-card account-card-small">
+    <div class="account-brand">✦<span>HORIZONTE CÓSMICO</span></div><span class="eyebrow">CADASTRO PENDENTE</span><h1>Trocar e-mail</h1><p class="account-intro">Informe o novo endereço. Enviaremos um novo código de confirmação.</p>
+    <form asp-action="TrocarEmail" method="post"><input type="hidden" name="emailAtual" value="@ViewBag.EmailAtual" /><div asp-validation-summary="ModelOnly" class="validation"></div><div class="field"><label asp-for="NovoEmail"></label><input asp-for="NovoEmail" autocomplete="email" /></div><button class="button-primary button-full" type="submit">Salvar e enviar código</button></form>
+    <a class="account-link" asp-action="CadastroPendente">Cancelar</a>
+</div></div>

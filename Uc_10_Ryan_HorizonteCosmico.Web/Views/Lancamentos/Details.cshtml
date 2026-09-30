@@ -1,0 +1,27 @@
+@model Uc_10_Ryan_HorizonteCosmico.Domain.Conteudos.Lancamento
+@{ ViewData["Title"] = Model.Nome; }
+@section Styles { <link rel="stylesheet" href="~/css/conteudo-publico.css" asp-append-version="true" /> }
+<div class="detail-page">
+    <div class="site-container">
+        <div class="detail-meta"><span>LANÇAMENTO</span><span>•</span><span>@Model.StatusLancamento</span></div>
+        <h1>@Model.Nome</h1>
+        <p class="detail-lead">@Model.Descricao</p>
+        <div class="detail-layout">
+            <article class="detail-main">
+                <div class="detail-hero @(string.IsNullOrWhiteSpace(Model.ImagemCapa) ? "detail-placeholder" : null)">@if (!string.IsNullOrWhiteSpace(Model.ImagemCapa)) { <img src="@Model.ImagemCapa" alt="@Model.Nome" /> } else { <span>🚀</span> }</div>
+                @if (!string.IsNullOrWhiteSpace(Model.ObjetivoMissao)) { <div class="detail-copy"><h2>Objetivo da missão</h2><p>@Model.ObjetivoMissao</p></div> }
+            </article>
+            <aside class="detail-summary">
+                <h2>Resumo</h2>
+                <dl>
+                    <dt>Agência / empresa</dt><dd>@Model.EmpresaAgencia</dd>
+                    @if (!string.IsNullOrWhiteSpace(Model.Foguete)) { <dt>Foguete</dt><dd>@Model.Foguete</dd> }
+                    @if (!string.IsNullOrWhiteSpace(Model.LocalLancamento)) { <dt>Local</dt><dd>@Model.LocalLancamento</dd> }
+                    @if (Model.DataHoraLancamento.HasValue) { <dt>Data e hora</dt><dd>@Model.DataHoraLancamento.Value.ToString("dd/MM/yyyy HH:mm")</dd> }
+                </dl>
+                @if (!string.IsNullOrWhiteSpace(Model.LinkTransmissao)) { <a class="button-secondary button-full" href="@Model.LinkTransmissao" target="_blank" rel="noopener noreferrer">Acompanhar transmissão ↗</a> }
+            </aside>
+        </div>
+        <a class="back-link" asp-action="Index">← Voltar aos lançamentos</a>
+    </div>
+</div>

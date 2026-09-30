@@ -1,0 +1,8 @@
+@model Uc_10_Ryan_HorizonteCosmico.Web.ViewModels.RedefinirSenhaViewModel
+@{ ViewData["Title"] = "Redefinir senha"; }
+@section Styles { <link rel="stylesheet" href="~/css/redefinir-senha.css" asp-append-version="true" /> }
+<div class="account-page"><div class="account-card account-card-small">
+    <div class="account-brand">✦<span>HORIZONTE CÓSMICO</span></div><span class="eyebrow">NOVA SENHA</span><h1>Redefina sua senha</h1><p class="account-intro">Crie uma nova senha para voltar a acessar sua conta.</p>
+    <form asp-action="RedefinirSenha" method="post"><div asp-validation-summary="ModelOnly" class="validation"></div><input asp-for="UserId" type="hidden" /><input asp-for="Token" type="hidden" /><div class="field"><label asp-for="NovaSenha"></label><input asp-for="NovaSenha" autocomplete="new-password" /></div><div class="field"><label asp-for="ConfirmarNovaSenha"></label><input asp-for="ConfirmarNovaSenha" autocomplete="new-password" /></div><button class="button-primary button-full" type="submit">Salvar nova senha</button></form>
+    <a class="account-link" asp-action="Login">Cancelar</a>
+</div></div>

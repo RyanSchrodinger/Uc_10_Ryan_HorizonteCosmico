@@ -1,0 +1,42 @@
+@model Uc_10_Ryan_HorizonteCosmico.Web.ViewModels.ListaAstrofotografiasViewModel
+@{ ViewData["Title"] = "Galeria"; }
+@section Styles { <link rel="stylesheet" href="~/css/conteudo-publico.css" asp-append-version="true" /> }
+<div class="content-page">
+    <div class="site-container">
+        <div class="content-heading"><span class="eyebrow">GALERIA DO UNIVERSO</span><h1>Astrofotografias</h1><p>Veja registros do céu, seus autores e os equipamentos usados em cada captura.</p></div>
+        <section class="featured-section">
+            <div class="section-title-row"><div><span class="eyebrow">EM EVIDÊNCIA</span><h2>Principais fotografias</h2></div><span class="result-count">@Model.Resultados.Count fotografia(s)</span></div>
+            <div class="photo-grid featured-photo-grid">
+                @foreach (var item in Model.Destaques)
+                {
+                    <a class="photo-card" asp-action="Details" asp-route-id="@item.Id">
+                        <div class="photo-media @(string.IsNullOrWhiteSpace(item.Imagem) ? "media-placeholder" : null)">@if (!string.IsNullOrWhiteSpace(item.Imagem)) { <img src="@item.Imagem" alt="@item.Titulo" /> } else { <span>✦</span> }</div>
+                        <div class="photo-body"><span class="card-kicker">@item.Categoria</span><h3>@item.Titulo</h3><p>@item.Autor</p></div>
+                    </a>
+                }
+            </div>
+        </section>
+        <section class="content-results">
+            <div class="section-title-row"><div><span class="eyebrow">ACERVO</span><h2>Todas as fotografias</h2></div></div>
+            <form class="content-filters" method="get">
+                <div class="filter-field filter-search"><label for="busca">Pesquisar</label><input id="busca" name="busca" value="@Model.Busca" placeholder="Título, autor ou tema" /></div>
+                <div class="filter-field"><label for="categoria">Categoria</label><select id="categoria" name="categoria"><option value="">Todas</option>@foreach (var categoria in Model.Categorias) { <option value="@categoria" selected="@(Model.Categoria == categoria)">@categoria</option> }</select></div>
+                <button class="button-primary" type="submit">Aplicar</button>
+                @if (!string.IsNullOrWhiteSpace(Model.Busca) || !string.IsNullOrWhiteSpace(Model.Categoria)) { <a class="button-secondary" asp-action="Index">Limpar</a> }
+            </form>
+            @if (Model.Resultados.Count == 0)
+            {
+                <div class="empty-state"><strong>Nenhuma fotografia encontrada.</strong><span>Tente outro termo ou categoria.</span></div>
+            }
+            else
+            {
+                <div class="photo-grid">
+                    @foreach (var item in Model.Resultados)
+                    {
+                        <a class="photo-card" asp-action="Details" asp-route-id="@item.Id"><div class="photo-media @(string.IsNullOrWhiteSpace(item.Imagem) ? "media-placeholder" : null)">@if (!string.IsNullOrWhiteSpace(item.Imagem)) { <img src="@item.Imagem" alt="@item.Titulo" /> } else { <span>✦</span> }</div><div class="photo-body"><span class="card-kicker">@item.Categoria</span><h3>@item.Titulo</h3><p>@item.Autor</p><span class="card-link">Ver fotografia →</span></div></a>
+                    }
+                </div>
+            }
+        </section>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+@model Uc_10_Ryan_HorizonteCosmico.Domain.Conteudos.Descoberta
+@{ ViewData["Title"] = Model.Titulo; }
+@section Styles { <link rel="stylesheet" href="~/css/conteudo-publico.css" asp-append-version="true" /> }
+
+<div class="detail-page">
+    <div class="site-container">
+        <div class="detail-meta"><span>@Model.Categoria</span><span>•</span><span>@Model.DataDescoberta.ToString("dd MMM yyyy")</span></div>
+        <h1>@Model.Titulo</h1>
+        <p class="detail-lead">@Model.Resumo</p>
+
+        <div class="detail-layout">
+            <article class="detail-main">
+                <div class="detail-hero @(string.IsNullOrWhiteSpace(Model.ImagemCapa) ? "detail-placeholder" : null)">
+                    @if (!string.IsNullOrWhiteSpace(Model.ImagemCapa))
+                    {
+                        <img src="@Model.ImagemCapa" alt="@Model.Titulo" />
+                    }
+                    else
+                    {
+                        <span>✦</span>
+                    }
+                </div>
+                <div class="detail-copy">
+                    @foreach (var paragrafo in Model.Conteudo.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        <p>@paragrafo</p>
+                    }
+                </div>
+            </article>
+            <aside class="detail-summary">
+                <h2>Resumo</h2>
+                <dl>
+                    <dt>Categoria</dt><dd>@Model.Categoria</dd>
+                    <dt>Data da descoberta</dt><dd>@Model.DataDescoberta.ToString("dd/MM/yyyy")</dd>
+                    @if (!string.IsNullOrWhiteSpace(Model.Fonte)) { <dt>Fonte</dt><dd>@Model.Fonte</dd> }
+                </dl>
+                @if (!string.IsNullOrWhiteSpace(Model.LinkFonte))
+                {
+                    <a class="button-secondary button-full" href="@Model.LinkFonte" target="_blank" rel="noopener noreferrer">Acessar fonte original ↗</a>
+                }
+            </aside>
+        </div>
+        <a class="back-link" asp-action="Index">← Voltar às descobertas</a>
+    </div>
+</div>
