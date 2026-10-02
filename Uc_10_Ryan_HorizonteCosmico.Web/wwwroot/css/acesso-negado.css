@@ -1,1 +1,9 @@
- .access-page .account-card{text-align:center}.access-page .access-icon{margin-inline:auto}.access-page .stack-actions{margin-top:25px}
+.pagina-acesso .cartao-conta {
+    text-align: center;
+}
+.pagina-acesso .icone-acesso {
+    margin-inline: auto;
+}
+.pagina-acesso .acoes-empilhadas {
+    margin-top: 25px;
+}

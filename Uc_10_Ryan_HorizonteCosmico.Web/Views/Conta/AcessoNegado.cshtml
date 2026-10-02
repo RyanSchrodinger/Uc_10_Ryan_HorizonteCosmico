@@ -1,6 +1,6 @@
 @{ ViewData["Title"] = "Acesso negado"; }
 @section Styles { <link rel="stylesheet" href="~/css/acesso-negado.css" asp-append-version="true" /> }
-<div class="account-page access-page"><div class="account-card account-card-small">
-    <div class="access-icon" aria-hidden="true">×</div><span class="eyebrow">ACESSO RESTRITO</span><h1>Acesso negado</h1><p class="account-intro">Você está autenticado, mas sua conta não possui permissão para acessar esta área.</p>
-    <div class="stack-actions"><a class="button-primary button-full" asp-controller="Home" asp-action="Index">Voltar ao início</a><a class="button-secondary button-full" asp-controller="Conta" asp-action="MeuPerfil">Meu perfil</a></div>
+<div class="pagina-conta pagina-acesso"><div class="cartao-conta cartao-conta-pequeno">
+    <div class="icone-acesso" aria-hidden="true">×</div><span class="rotulo-superior">ACESSO RESTRITO</span><h1>Acesso negado</h1><p class="introducao-conta">Você está autenticado, mas sua conta não possui permissão para acessar esta área.</p>
+    <div class="acoes-empilhadas"><a class="botao-primario botao-largura-total" asp-controller="Home" asp-action="Index">Voltar ao início</a><a class="botao-secundario botao-largura-total" asp-controller="Conta" asp-action="MeuPerfil">Meu perfil</a></div>
 </div></div>

@@ -1,17 +1,17 @@
 @model Uc_10_Ryan_HorizonteCosmico.Domain.Conteudos.Astrofotografia
 @{ ViewData["Title"] = Model.Titulo; }
 @section Styles { <link rel="stylesheet" href="~/css/conteudo-publico.css" asp-append-version="true" /> }
-<div class="detail-page">
-    <div class="site-container">
-        <div class="detail-meta"><span>@Model.Categoria</span><span>•</span><span>ASTROFOTOGRAFIA</span></div>
+<div class="pagina-detalhe">
+    <div class="container-site">
+        <div class="metadados-detalhe"><span>@Model.Categoria</span><span>•</span><span>ASTROFOTOGRAFIA</span></div>
         <h1>@Model.Titulo</h1>
-        <p class="detail-lead">@Model.Descricao</p>
-        <div class="detail-layout">
-            <article class="detail-main">
-                <div class="detail-hero photo-detail-hero @(string.IsNullOrWhiteSpace(Model.Imagem) ? "detail-placeholder" : null)">@if (!string.IsNullOrWhiteSpace(Model.Imagem)) { <img src="@Model.Imagem" alt="@Model.Titulo" /> } else { <span>✦</span> }</div>
-                <div class="detail-copy"><p>@Model.Descricao</p></div>
+        <p class="resumo-detalhe">@Model.Descricao</p>
+        <div class="estrutura-detalhe">
+            <article class="principal-detalhe">
+                <div class="destaque-detalhe destaque-fotografia-detalhe @(string.IsNullOrWhiteSpace(Model.Imagem) ? "espaco-detalhe" : null)">@if (!string.IsNullOrWhiteSpace(Model.Imagem)) { <img src="@Model.Imagem" alt="@Model.Titulo" /> } else { <span>✦</span> }</div>
+                <div class="texto-detalhe"><p>@Model.Descricao</p></div>
             </article>
-            <aside class="detail-summary">
+            <aside class="informacoes-detalhe">
                 <h2>Dados da captura</h2>
                 <dl>
                     <dt>Autor</dt><dd>@Model.Autor</dd>
@@ -20,9 +20,9 @@
                     @if (!string.IsNullOrWhiteSpace(Model.Equipamento)) { <dt>Equipamento</dt><dd>@Model.Equipamento</dd> }
                     @if (!string.IsNullOrWhiteSpace(Model.CreditoImagem)) { <dt>Crédito</dt><dd>@Model.CreditoImagem</dd> }
                 </dl>
-                @if (!string.IsNullOrWhiteSpace(Model.Link)) { <a class="button-secondary button-full" href="@Model.Link" target="_blank" rel="noopener noreferrer">Fonte original ↗</a> }
+                @if (!string.IsNullOrWhiteSpace(Model.Link)) { <a class="botao-secundario botao-largura-total" href="@Model.Link" target="_blank" rel="noopener noreferrer">Fonte original ↗</a> }
             </aside>
         </div>
-        <a class="back-link" asp-action="Index">← Voltar à galeria</a>
+        <a class="link-voltar" asp-action="Index">← Voltar à galeria</a>
     </div>
 </div>

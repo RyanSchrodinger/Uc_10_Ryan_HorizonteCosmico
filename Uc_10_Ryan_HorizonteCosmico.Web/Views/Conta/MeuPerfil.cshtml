@@ -1,9 +1,9 @@
 @model Uc_10_Ryan_HorizonteCosmico.Domain.Usuarios.ApplicationUser
 @{ ViewData["Title"] = "Meu perfil"; }
 @section Styles { <link rel="stylesheet" href="~/css/perfil.css" asp-append-version="true" /> }
-<div class="profile-page"><div class="site-container">
-    @if (TempData["Mensagem"] is string mensagem) { <div class="notice profile-notice">@mensagem</div> }
-    <div class="profile-heading"><div><span class="eyebrow">MINHA CONTA</span><h1>Meu perfil</h1><p>Consulte seus dados e gerencie o acesso à sua conta.</p></div><a class="button-primary" asp-action="EditarPerfil">Editar perfil</a></div>
-    <section class="profile-card"><div class="profile-avatar" aria-hidden="true">@Model.NomeCompleto.Split(' ', StringSplitOptions.RemoveEmptyEntries).FirstOrDefault()?.FirstOrDefault()</div><div class="profile-main"><h2>@Model.NomeCompleto</h2><p>@Model.Email</p><span class="status-badge">Conta ativa</span></div></section>
-    <section class="profile-details"><div><span>Nome completo</span><strong>@Model.NomeCompleto</strong></div><div><span>E-mail</span><strong>@Model.Email</strong></div><div><span>Data de cadastro</span><strong>@Model.DataCadastro.ToLocalTime().ToString("dd/MM/yyyy")</strong></div><div><span>Tipo de acesso</span><strong>@(User.IsInRole(RolesSistema.Administrador) ? "Administrador" : "Usuário")</strong></div></section>
+<div class="pagina-perfil"><div class="container-site">
+    @if (TempData["Mensagem"] is string mensagem) { <div class="aviso aviso-perfil">@mensagem</div> }
+    <div class="cabecalho-perfil"><div><span class="rotulo-superior">MINHA CONTA</span><h1>Meu perfil</h1><p>Consulte seus dados e gerencie o acesso à sua conta.</p></div><a class="botao-primario" asp-action="EditarPerfil">Editar perfil</a></div>
+    <section class="cartao-perfil"><div class="avatar-perfil" aria-hidden="true">@Model.NomeCompleto.Split(' ', StringSplitOptions.RemoveEmptyEntries).FirstOrDefault()?.FirstOrDefault()</div><div class="principal-perfil"><h2>@Model.NomeCompleto</h2><p>@Model.Email</p><span class="selo-status">Conta ativa</span></div></section>
+    <section class="detalhes-perfil"><div><span>Nome completo</span><strong>@Model.NomeCompleto</strong></div><div><span>E-mail</span><strong>@Model.Email</strong></div><div><span>Data de cadastro</span><strong>@Model.DataCadastro.ToLocalTime().ToString("dd/MM/yyyy")</strong></div><div><span>Tipo de acesso</span><strong>@(User.IsInRole(RolesSistema.Administrador) ? "Administrador" : "Usuário")</strong></div></section>
 </div></div>

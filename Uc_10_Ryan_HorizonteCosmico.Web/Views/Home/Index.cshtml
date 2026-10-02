@@ -5,40 +5,40 @@
     <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
 }
 
-<div class="home-page">
-    <section class="hero-section">
-        <div class="site-container hero-grid">
-            <div class="hero-copy">
-                <span class="eyebrow">EXPLORE O UNIVERSO</span>
+<div class="pagina-inicial">
+    <section class="secao-destaque">
+        <div class="container-site grade-destaque">
+            <div class="texto-destaque">
+                <span class="rotulo-superior">EXPLORE O UNIVERSO</span>
                 <h1>Descubra os mistérios da <em>Astronomia</em></h1>
                 <p>Lançamentos, descobertas e imagens incríveis em uma experiência clara e acessível.</p>
-                <div class="hero-actions">
-                    <a class="button-primary" href="#conteudo">Explorar descobertas</a>
-                    <a class="button-secondary" href="#galeria">Ver galeria</a>
+                <div class="acoes-destaque">
+                    <a class="botao-primario" href="#conteudo">Explorar descobertas</a>
+                    <a class="botao-secundario" href="#galeria">Ver galeria</a>
                 </div>
             </div>
-            <div class="hero-orbit" aria-hidden="true">
-                <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-                <div class="planet">✦</div>
+            <div class="orbita-destaque" aria-hidden="true">
+                <div class="orbita orbita-um"></div><div class="orbita orbita-dois"></div>
+                <div class="planeta">✦</div>
             </div>
         </div>
     </section>
 
-    <section class="content-section" id="conteudo">
-        <div class="site-container">
-            <div class="section-heading"><span class="eyebrow">CIÊNCIA EM DESTAQUE</span><h2>Últimas descobertas</h2><p>Novidades científicas explicadas de forma direta.</p></div>
-            <div class="feature-grid">
-                <article class="feature-card"><span>DESCOBERTA</span><h3>Novo exoplaneta identificado</h3><p>Um possível mundo rochoso em uma estrela próxima.</p><a href="#explorar">Explorar conteúdo →</a></article>
-                <article class="feature-card"><span>DESCOBERTA</span><h3>Galáxia distante observada</h3><p>A luz antiga ajuda a compreender o universo jovem.</p><a href="#explorar">Explorar conteúdo →</a></article>
-                <article class="feature-card"><span>DESCOBERTA</span><h3>Estrela massiva em estudo</h3><p>Novos dados revelam etapas de sua evolução.</p><a href="#explorar">Explorar conteúdo →</a></article>
+    <section class="secao-conteudo" id="conteudo">
+        <div class="container-site">
+            <div class="cabecalho-secao"><span class="rotulo-superior">CIÊNCIA EM DESTAQUE</span><h2>Últimas descobertas</h2><p>Novidades científicas explicadas de forma direta.</p></div>
+            <div class="grade-destaques">
+                <article class="cartao-destaque"><span>DESCOBERTA</span><h3>Novo exoplaneta identificado</h3><p>Um possível mundo rochoso em uma estrela próxima.</p><a href="#explorar">Explorar conteúdo →</a></article>
+                <article class="cartao-destaque"><span>DESCOBERTA</span><h3>Galáxia distante observada</h3><p>A luz antiga ajuda a compreender o universo jovem.</p><a href="#explorar">Explorar conteúdo →</a></article>
+                <article class="cartao-destaque"><span>DESCOBERTA</span><h3>Estrela massiva em estudo</h3><p>Novos dados revelam etapas de sua evolução.</p><a href="#explorar">Explorar conteúdo →</a></article>
             </div>
         </div>
     </section>
 
-    <section class="content-section section-muted" id="lancamentos">
-        <div class="site-container split-section">
-            <div><span class="eyebrow">MISSÕES ESPACIAIS</span><h2>Próximos lançamentos</h2><p>Acompanhe missões programadas, agências, veículos e locais de lançamento.</p></div>
-            <div class="mission-list">
+    <section class="secao-conteudo secao-suave" id="lancamentos">
+        <div class="container-site secao-dividida">
+            <div><span class="rotulo-superior">MISSÕES ESPACIAIS</span><h2>Próximos lançamentos</h2><p>Acompanhe missões programadas, agências, veículos e locais de lançamento.</p></div>
+            <div class="lista-missoes">
                 <div><strong>Missão Aurora</strong><span>30 AGO • NASA • Centro espacial</span></div>
                 <div><strong>Satélite climático</strong><span>12 SET • ESA • Base de lançamento</span></div>
                 <div><strong>Sonda de pesquisa</strong><span>Data a definir • Missão científica</span></div>
@@ -46,20 +46,20 @@
         </div>
     </section>
 
-    <section class="content-section" id="galeria">
-        <div class="site-container">
-            <div class="section-heading"><span class="eyebrow">ASTROFOTOGRAFIA</span><h2>Galeria espacial</h2><p>Imagens do universo acompanhadas de descrição, autoria e créditos.</p></div>
-            <div class="gallery-grid">
-                <div class="gallery-card gallery-one"><span>GALÁXIA</span><strong>Galáxia de Andrômeda</strong></div>
-                <div class="gallery-card gallery-two"><span>NEBULOSA</span><strong>Nebulosa em violeta</strong></div>
-                <div class="gallery-card gallery-three"><span>LUA</span><strong>Superfície lunar</strong></div>
+    <section class="secao-conteudo" id="galeria">
+        <div class="container-site">
+            <div class="cabecalho-secao"><span class="rotulo-superior">ASTROFOTOGRAFIA</span><h2>Galeria espacial</h2><p>Imagens do universo acompanhadas de descrição, autoria e créditos.</p></div>
+            <div class="grade-galeria">
+                <div class="cartao-galeria galeria-um"><span>GALÁXIA</span><strong>Galáxia de Andrômeda</strong></div>
+                <div class="cartao-galeria galeria-dois"><span>NEBULOSA</span><strong>Nebulosa em violeta</strong></div>
+                <div class="cartao-galeria galeria-tres"><span>LUA</span><strong>Superfície lunar</strong></div>
             </div>
         </div>
     </section>
 
-    <section class="content-section section-dark" id="explorar">
-        <div class="site-container explore-section">
-            <span class="eyebrow">APRENDA EXPLORANDO</span>
+    <section class="secao-conteudo secao-escura" id="explorar">
+        <div class="container-site secao-explorar">
+            <span class="rotulo-superior">APRENDA EXPLORANDO</span>
             <h2>Conhecimento para olhar mais longe.</h2>
             <p>O Horizonte Cósmico organiza informações sobre descobertas, missões e objetos celestes em uma experiência simples e acessível.</p>
         </div>

@@ -1,18 +1,18 @@
 @model Uc_10_Ryan_HorizonteCosmico.Web.ViewModels.LoginViewModel
 @{ ViewData["Title"] = "Entrar"; }
 @section Styles { <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" /> }
-<div class="account-page"><div class="account-card">
-    <div class="account-brand">✦<span>HORIZONTE CÓSMICO</span></div>
-    <span class="eyebrow">ACESSO</span><h1>Entre na sua conta</h1><p class="account-intro">Acesse seu perfil para continuar explorando o Horizonte Cósmico.</p>
-    @if (TempData["Mensagem"] is string mensagem) { <div class="notice">@mensagem</div> }
+<div class="pagina-conta"><div class="cartao-conta">
+    <div class="marca-conta">✦<span>HORIZONTE CÓSMICO</span></div>
+    <span class="rotulo-superior">ACESSO</span><h1>Entre na sua conta</h1><p class="introducao-conta">Acesse seu perfil para continuar explorando o Horizonte Cósmico.</p>
+    @if (TempData["Mensagem"] is string mensagem) { <div class="aviso">@mensagem</div> }
     <form asp-action="Login" method="post">
-        <div asp-validation-summary="ModelOnly" class="validation"></div>
-        <div class="field"><label asp-for="Email"></label><input asp-for="Email" autocomplete="email" /></div>
-        <div class="field"><label asp-for="Senha"></label><input asp-for="Senha" autocomplete="current-password" /></div>
-        <label class="check-field"><input asp-for="LembrarMe" /><span>Lembrar login</span></label>
-        <button class="button-primary button-full" type="submit">Entrar</button>
+        <div asp-validation-summary="ModelOnly" class="validacao"></div>
+        <div class="campo"><label asp-for="Email"></label><input asp-for="Email" autocomplete="email" /></div>
+        <div class="campo"><label asp-for="Senha"></label><input asp-for="Senha" autocomplete="current-password" /></div>
+        <label class="campo-checkbox"><input asp-for="LembrarMe" /><span>Lembrar login</span></label>
+        <button class="botao-primario botao-largura-total" type="submit">Entrar</button>
     </form>
-    <a class="account-link" asp-action="EsqueciSenha">Esqueci minha senha</a>
-    <div class="account-divider"><span>ou</span></div>
-    <p class="account-footer">Ainda não possui uma conta? <a asp-action="Cadastro">Criar conta</a></p>
+    <a class="link-conta" asp-action="EsqueciSenha">Esqueci minha senha</a>
+    <div class="divisor-conta"><span>ou</span></div>
+    <p class="rodape-conta">Ainda não possui uma conta? <a asp-action="Cadastro">Criar conta</a></p>
 </div></div>

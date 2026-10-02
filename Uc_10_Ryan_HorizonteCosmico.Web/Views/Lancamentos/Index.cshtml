@@ -2,57 +2,57 @@
 @{ ViewData["Title"] = "Lançamentos"; }
 @section Styles { <link rel="stylesheet" href="~/css/conteudo-publico.css" asp-append-version="true" /> }
 
-<div class="content-page">
-    <div class="site-container">
-        <div class="content-heading">
-            <span class="eyebrow">MISSÕES E EXPLORAÇÃO</span>
+<div class="pagina-conteudo">
+    <div class="container-site">
+        <div class="cabecalho-conteudo">
+            <span class="rotulo-superior">MISSÕES E EXPLORAÇÃO</span>
             <h1>Próximos lançamentos</h1>
             <p>Acompanhe missões, foguetes e informações dos próximos lançamentos.</p>
         </div>
 
-        <section class="featured-section">
-            <div class="section-title-row">
-                <div><span class="eyebrow">EM EVIDÊNCIA</span><h2>Principais lançamentos</h2></div>
-                <span class="result-count">@Model.Resultados.Count lançamento(s)</span>
+        <section class="secao-principais">
+            <div class="linha-titulo-secao">
+                <div><span class="rotulo-superior">EM EVIDÊNCIA</span><h2>Principais lançamentos</h2></div>
+                <span class="quantidade-resultados">@Model.Resultados.Count lançamento(s)</span>
             </div>
-            <div class="content-grid featured-grid">
+            <div class="grade-conteudo grade-principais">
                 @foreach (var item in Model.Destaques)
                 {
-                    <a class="content-card featured-card" asp-action="Details" asp-route-id="@item.Id">
-                        <div class="card-media @(string.IsNullOrWhiteSpace(item.ImagemCapa) ? "media-placeholder" : null)">
+                    <a class="cartao-conteudo cartao-principal" asp-action="Details" asp-route-id="@item.Id">
+                        <div class="midia-cartao @(string.IsNullOrWhiteSpace(item.ImagemCapa) ? "espaco-midia" : null)">
                             @if (!string.IsNullOrWhiteSpace(item.ImagemCapa)) { <img src="@item.ImagemCapa" alt="@item.Nome" /> } else { <span>🚀</span> }
                         </div>
-                        <div class="card-body">
-                            <span class="card-kicker">@item.StatusLancamento · @(item.DataHoraLancamento?.ToString("dd MMM yyyy") ?? "Data a definir")</span>
+                        <div class="corpo-cartao">
+                            <span class="categoria-cartao">@item.StatusLancamento · @(item.DataHoraLancamento?.ToString("dd MMM yyyy") ?? "Data a definir")</span>
                             <h3>@item.Nome</h3>
                             <p>@item.Descricao</p>
-                            <span class="card-link">Ver missão →</span>
+                            <span class="link-cartao">Ver missão →</span>
                         </div>
                     </a>
                 }
             </div>
         </section>
 
-        <section class="content-results">
-            <div class="section-title-row"><div><span class="eyebrow">AGENDA</span><h2>Todos os lançamentos</h2></div></div>
-            <form class="content-filters" method="get">
-                <div class="filter-field filter-search"><label for="busca">Pesquisar</label><input id="busca" name="busca" value="@Model.Busca" placeholder="Missão, agência ou objetivo" /></div>
-                <div class="filter-field"><label for="status">Situação</label><select id="status" name="status"><option value="">Todas</option>@foreach (var status in Model.StatusDisponiveis) { <option value="@status" selected="@(Model.Status == status)">@status</option> }</select></div>
-                <button class="button-primary" type="submit">Aplicar</button>
-                @if (!string.IsNullOrWhiteSpace(Model.Busca) || !string.IsNullOrWhiteSpace(Model.Status)) { <a class="button-secondary" asp-action="Index">Limpar</a> }
+        <section class="resultados-conteudo">
+            <div class="linha-titulo-secao"><div><span class="rotulo-superior">AGENDA</span><h2>Todos os lançamentos</h2></div></div>
+            <form class="filtros-conteudo" method="get">
+                <div class="campo-filtro campo-pesquisa"><label for="busca">Pesquisar</label><input id="busca" name="busca" value="@Model.Busca" placeholder="Missão, agência ou objetivo" /></div>
+                <div class="campo-filtro"><label for="status">Situação</label><select id="status" name="status"><option value="">Todas</option>@foreach (var status in Model.StatusDisponiveis) { <option value="@status" selected="@(Model.Status == status)">@status</option> }</select></div>
+                <button class="botao-primario" type="submit">Aplicar</button>
+                @if (!string.IsNullOrWhiteSpace(Model.Busca) || !string.IsNullOrWhiteSpace(Model.Status)) { <a class="botao-secundario" asp-action="Index">Limpar</a> }
             </form>
             @if (Model.Resultados.Count == 0)
             {
-                <div class="empty-state"><strong>Nenhum lançamento encontrado.</strong><span>Tente outro termo ou situação.</span></div>
+                <div class="estado-vazio"><strong>Nenhum lançamento encontrado.</strong><span>Tente outro termo ou situação.</span></div>
             }
             else
             {
-                <div class="content-grid">
+                <div class="grade-conteudo">
                     @foreach (var item in Model.Resultados)
                     {
-                        <a class="content-card" asp-action="Details" asp-route-id="@item.Id">
-                            <div class="card-media @(string.IsNullOrWhiteSpace(item.ImagemCapa) ? "media-placeholder" : null)">@if (!string.IsNullOrWhiteSpace(item.ImagemCapa)) { <img src="@item.ImagemCapa" alt="@item.Nome" /> } else { <span>🚀</span> }</div>
-                            <div class="card-body"><span class="card-kicker">@item.StatusLancamento · @item.EmpresaAgencia</span><h3>@item.Nome</h3><p>@item.Descricao</p><span class="card-link">Ver detalhes →</span></div>
+                        <a class="cartao-conteudo" asp-action="Details" asp-route-id="@item.Id">
+                            <div class="midia-cartao @(string.IsNullOrWhiteSpace(item.ImagemCapa) ? "espaco-midia" : null)">@if (!string.IsNullOrWhiteSpace(item.ImagemCapa)) { <img src="@item.ImagemCapa" alt="@item.Nome" /> } else { <span>🚀</span> }</div>
+                            <div class="corpo-cartao"><span class="categoria-cartao">@item.StatusLancamento · @item.EmpresaAgencia</span><h3>@item.Nome</h3><p>@item.Descricao</p><span class="link-cartao">Ver detalhes →</span></div>
                         </a>
                     }
                 </div>

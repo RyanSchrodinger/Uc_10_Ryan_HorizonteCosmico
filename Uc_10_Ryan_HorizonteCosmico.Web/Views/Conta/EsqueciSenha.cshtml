@@ -1,8 +1,8 @@
 @model Uc_10_Ryan_HorizonteCosmico.Web.ViewModels.EsqueciSenhaViewModel
 @{ ViewData["Title"] = "Recuperar senha"; }
 @section Styles { <link rel="stylesheet" href="~/css/recuperar-senha.css" asp-append-version="true" /> }
-<div class="account-page"><div class="account-card account-card-small">
-    <div class="account-brand">✦<span>HORIZONTE CÓSMICO</span></div><span class="eyebrow">ACESSO</span><h1>Recuperar senha</h1><p class="account-intro">Informe o e-mail associado à sua conta para receber as instruções.</p>
-    <form asp-action="EsqueciSenha" method="post"><div asp-validation-summary="ModelOnly" class="validation"></div><div class="field"><label asp-for="Email"></label><input asp-for="Email" autocomplete="email" /></div><button class="button-primary button-full" type="submit">Enviar instruções</button></form>
-    <a class="account-link" asp-action="Login">Voltar ao login</a>
+<div class="pagina-conta"><div class="cartao-conta cartao-conta-pequeno">
+    <div class="marca-conta">✦<span>HORIZONTE CÓSMICO</span></div><span class="rotulo-superior">ACESSO</span><h1>Recuperar senha</h1><p class="introducao-conta">Informe o e-mail associado à sua conta para receber as instruções.</p>
+    <form asp-action="EsqueciSenha" method="post"><div asp-validation-summary="ModelOnly" class="validacao"></div><div class="campo"><label asp-for="Email"></label><input asp-for="Email" autocomplete="email" /></div><button class="botao-primario botao-largura-total" type="submit">Enviar instruções</button></form>
+    <a class="link-conta" asp-action="Login">Voltar ao login</a>
 </div></div>

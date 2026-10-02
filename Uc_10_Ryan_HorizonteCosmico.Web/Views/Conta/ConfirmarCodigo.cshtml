@@ -1,12 +1,12 @@
 @model Uc_10_Ryan_HorizonteCosmico.Web.ViewModels.ConfirmarCodigoViewModel
 @{ ViewData["Title"] = "Confirmar e-mail"; }
 @section Styles { <link rel="stylesheet" href="~/css/confirmar-codigo.css" asp-append-version="true" /> }
-<div class="account-page"><div class="account-card account-card-small">
-    <div class="verification-icon" aria-hidden="true">✓</div><span class="eyebrow">CONFIRMAÇÃO</span><h1>Digite seu código</h1><p class="account-intro">Informe o código de 6 dígitos enviado para <strong>@Model.Email</strong>.</p>
+<div class="pagina-conta"><div class="cartao-conta cartao-conta-pequeno">
+    <div class="icone-verificacao" aria-hidden="true">✓</div><span class="rotulo-superior">CONFIRMAÇÃO</span><h1>Digite seu código</h1><p class="introducao-conta">Informe o código de 6 dígitos enviado para <strong>@Model.Email</strong>.</p>
     <form asp-action="ConfirmarCodigo" method="post">
-        <div asp-validation-summary="ModelOnly" class="validation"></div><input asp-for="Email" type="hidden" />
-        <div class="code-field"><label asp-for="Codigo">Código de confirmação</label><input asp-for="Codigo" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000" /></div>
-        <button class="button-primary button-full" type="submit">Confirmar código</button>
+        <div asp-validation-summary="ModelOnly" class="validacao"></div><input asp-for="Email" type="hidden" />
+        <div class="campo-codigo"><label asp-for="Codigo">Código de confirmação</label><input asp-for="Codigo" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000" /></div>
+        <button class="botao-primario botao-largura-total" type="submit">Confirmar código</button>
     </form>
-    <a class="account-link" asp-action="CadastroPendente">Voltar</a>
+    <a class="link-conta" asp-action="CadastroPendente">Voltar</a>
 </div></div>

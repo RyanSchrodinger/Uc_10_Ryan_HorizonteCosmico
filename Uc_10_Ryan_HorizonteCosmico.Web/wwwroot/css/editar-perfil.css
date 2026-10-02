@@ -1,1 +1,44 @@
- .narrow-container{max-width:760px}.page-heading{margin-bottom:30px}.profile-form{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px}.form-section{padding-bottom:25px;margin-bottom:25px;border-bottom:1px solid var(--line)}.form-section:last-of-type{border-bottom:0;margin-bottom:0}.form-section h2{font-size:21px;margin:0 0 7px}.form-help{color:var(--muted);font-size:13px;margin-bottom:20px}.form-actions{display:flex;justify-content:flex-end;gap:10px;padding-top:5px}@media(max-width:550px){.form-actions{display:grid}.form-actions>*{width:100%}}
+.container-reduzido {
+    max-width: 760px;
+}
+.cabecalho-pagina {
+    margin-bottom: 30px;
+}
+.formulario-perfil {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 28px;
+}
+.secao-formulario {
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--line);
+}
+.secao-formulario:last-of-type {
+    border-bottom: 0;
+    margin-bottom: 0;
+}
+.secao-formulario h2 {
+    font-size: 21px;
+    margin: 0 0 7px;
+}
+.ajuda-formulario {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+.acoes-formulario {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 5px;
+}
+@media(max-width:550px) {
+    .acoes-formulario {
+        display: grid;
+    }
+    .acoes-formulario>* {
+        width: 100%;
+    }
+}

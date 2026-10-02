@@ -24,38 +24,38 @@
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
-<header class="site-header">
-    <nav class="site-nav" aria-label="Navegação principal">
-        <div class="site-container nav-inner">
+<header class="cabecalho-site">
+    <nav class="navegacao-site" aria-label="Navegação principal">
+        <div class="container-site conteudo-navegacao">
                
-            <a class="brand" asp-controller="Home" asp-action="Index" aria-label="Horizonte Cósmico - início">
+            <a class="marca" asp-controller="Home" asp-action="Index" aria-label="Horizonte Cósmico - início">
                     
                 <span><strong>HORIZONTE CÓSMICO</strong><small>ASTRONOMIA E EXPLORAÇÃO</small></span>
             </a>
 
-            <button class="nav-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation" aria-controls="mainNavigation" aria-expanded="false" aria-label="Abrir menu">
+            <button class="botao-navegacao" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation" aria-controls="mainNavigation" aria-expanded="false" aria-label="Abrir menu">
                 <span></span><span></span><span></span>
             </button>
 
-            <div class="collapse nav-menu" id="mainNavigation">
-                <div class="nav-links">
-                    <a class="@(controllerAtual == "Home" && acaoAtual == "Index" ? "active" : null)" asp-controller="Home" asp-action="Index">Início</a>
-                    <a class="@(controllerAtual == "Descobertas" ? "active" : null)" asp-controller="Descobertas" asp-action="Index">Descobertas</a>
-                    <a class="@(controllerAtual == "Lancamentos" ? "active" : null)" asp-controller="Lancamentos" asp-action="Index">Lançamentos</a>
-                    <a class="@(controllerAtual == "Astrofotografias" ? "active" : null)" asp-controller="Astrofotografias" asp-action="Index">Galeria</a>
+            <div class="collapse menu-navegacao" id="mainNavigation">
+                <div class="links-navegacao">
+                    <a class="@(controllerAtual == "Home" && acaoAtual == "Index" ? "ativo" : null)" asp-controller="Home" asp-action="Index">Início</a>
+                    <a class="@(controllerAtual == "Descobertas" ? "ativo" : null)" asp-controller="Descobertas" asp-action="Index">Descobertas</a>
+                    <a class="@(controllerAtual == "Lancamentos" ? "ativo" : null)" asp-controller="Lancamentos" asp-action="Index">Lançamentos</a>
+                    <a class="@(controllerAtual == "Astrofotografias" ? "ativo" : null)" asp-controller="Astrofotografias" asp-action="Index">Galeria</a>
                     <a asp-controller="Home" asp-action="Index" asp-fragment="explorar">Explorar</a>
                 </div>
 
-                <div class="nav-account">
+                <div class="conta-navegacao">
                     @if (User.Identity?.IsAuthenticated == true)
                     {
-                        <div class="account-menu dropdown">
-                            <button class="account-trigger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="menu-conta-container dropdown">
+                            <button class="botao-conta dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <span class="avatar" aria-hidden="true">@inicial</span>
-                                <span class="account-name">@primeiroNome</span>
+                                <span class="nome-conta">@primeiroNome</span>
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-end account-dropdown">
-                                <li class="account-dropdown-header"><strong>@nomeUsuario</strong><small>@tipoConta · @usuarioLogado?.Email</small></li>
+                            <ul class="dropdown-menu dropdown-menu-end menu-conta">
+                                <li class="cabecalho-menu-conta"><strong>@nomeUsuario</strong><small>@tipoConta · @usuarioLogado?.Email</small></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" asp-controller="Conta" asp-action="MeuPerfil">Meu perfil</a></li>
                                 <li><a class="dropdown-item" asp-controller="Conta" asp-action="EditarPerfil">Editar perfil</a></li>
@@ -66,7 +66,7 @@
                                 <li><hr class="dropdown-divider" /></li>
                                 <li>
                                     <form asp-controller="Conta" asp-action="Logout" method="post">
-                                        <button class="dropdown-item dropdown-logout" type="submit">Sair da conta</button>
+                                        <button class="dropdown-item sair-menu" type="submit">Sair da conta</button>
                                     </form>
                                 </li>
                             </ul>
@@ -74,7 +74,7 @@
                     }
                     else
                     {
-                        <a class="nav-login" asp-controller="Conta" asp-action="Login">Entrar</a>
+                        <a class="login-navegacao" asp-controller="Conta" asp-action="Login">Entrar</a>
                     }
                 </div>
             </div>
@@ -105,11 +105,11 @@
 
                         <img src="~/images/Logo.png"
                              alt="Horizonte Cósmico"
-                             class="marca-logo" />
+                             class="logo-marca" />
 
                         <div class="marca-informacoes">
 
-                            <strong class="marca-nome">
+                            <strong class="nome-marca">
                                 HORIZONTE CÓSMICO
                             </strong>
 

@@ -1,1 +1,10 @@
- .code-field{margin:24px 0}.code-field input{text-align:center;font-family:'Space Grotesk',sans-serif;font-size:28px;letter-spacing:.3em;padding-left:18px}
+.campo-codigo {
+    margin: 24px 0;
+}
+.campo-codigo input {
+    text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    letter-spacing: .3em;
+    padding-left: 18px;
+}

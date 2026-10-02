@@ -1,8 +1,8 @@
 @{ ViewData["Title"] = "Confirme seu e-mail"; var email = ViewBag.Email as string ?? ""; }
 @section Styles { <link rel="stylesheet" href="~/css/cadastro-pendente.css" asp-append-version="true" /> }
-<div class="account-page"><div class="account-card account-card-small">
-    <div class="verification-icon" aria-hidden="true">✦</div><span class="eyebrow">QUASE LÁ</span><h1>Confirme seu e-mail</h1>
-    <p class="account-intro">Enviamos um código de 6 dígitos para:</p><div class="email-highlight">@email</div>
-    @if (TempData["Mensagem"] is string mensagem) { <div class="notice">@mensagem</div> }
-    <div class="stack-actions"><a asp-action="ConfirmarCodigo" asp-route-email="@email" class="button-primary button-full">Confirmar código</a><form asp-action="ReenviarCodigo" method="post"><input type="hidden" name="email" value="@email" /><button class="button-secondary button-full" type="submit">Reenviar código</button></form><a asp-action="TrocarEmail" asp-route-email="@email" class="text-action">Trocar e-mail</a><form asp-action="ExcluirCadastro" method="post" class="delete-pending"><input type="hidden" name="email" value="@email" /><button type="submit" onclick="return confirm('Excluir este cadastro pendente?')">Apagar cadastro</button></form></div>
+<div class="pagina-conta"><div class="cartao-conta cartao-conta-pequeno">
+    <div class="icone-verificacao" aria-hidden="true">✦</div><span class="rotulo-superior">QUASE LÁ</span><h1>Confirme seu e-mail</h1>
+    <p class="introducao-conta">Enviamos um código de 6 dígitos para:</p><div class="destaque-email">@email</div>
+    @if (TempData["Mensagem"] is string mensagem) { <div class="aviso">@mensagem</div> }
+    <div class="acoes-empilhadas"><a asp-action="ConfirmarCodigo" asp-route-email="@email" class="botao-primario botao-largura-total">Confirmar código</a><form asp-action="ReenviarCodigo" method="post"><input type="hidden" name="email" value="@email" /><button class="botao-secundario botao-largura-total" type="submit">Reenviar código</button></form><a asp-action="TrocarEmail" asp-route-email="@email" class="acao-texto">Trocar e-mail</a><form asp-action="ExcluirCadastro" method="post" class="excluir-pendente"><input type="hidden" name="email" value="@email" /><button type="submit" onclick="return confirm('Excluir este cadastro pendente?')">Apagar cadastro</button></form></div>
 </div></div>
