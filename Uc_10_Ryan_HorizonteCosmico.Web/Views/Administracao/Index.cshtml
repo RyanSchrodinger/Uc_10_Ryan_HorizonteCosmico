@@ -1,59 +1,109 @@
 @model Uc_10_Ryan_HorizonteCosmico.Web.ViewModels.AdministracaoViewModel
 @{ ViewData["Title"] = "Painel administrativo"; }
-@section Styles { <link rel="stylesheet" href="~/css/administracao.css" asp-append-version="true" /> }
+@section Styles {
+    <link rel="stylesheet" href="~/css/administracao.css" asp-append-version="true" />
+}
 
-<div class="estrutura-admin">
-    <aside class="barra-lateral-admin">
-        <a class="marca-admin" asp-controller="Administracao" asp-action="Index">
-            <span class="icone-marca-admin">✦</span>
-            <span><strong>HORIZONTE CÓSMICO</strong><small>ADMINISTRAÇÃO</small></span>
+<div class="painel-administrativo">
+    <header class="cabecalho-administrativo">
+        <a class="marca-administrativa" asp-controller="Administracao" asp-action="Index" aria-label="Painel administrativo do Horizonte Cósmico">
+            <img src="~/images/Logo.png" alt="Horizonte Cósmico" />
+            <span>
+                <strong>HORIZONTE CÓSMICO</strong>
+                <small>ADMINISTRAÇÃO</small>
+            </span>
         </a>
-        <nav class="navegacao-admin" aria-label="Navegação administrativa">
+
+        <nav class="navegacao-administrativa" aria-label="Navegação administrativa">
             <a class="ativo" asp-controller="Administracao" asp-action="Index">Dashboard</a>
             <a asp-controller="Descobertas" asp-action="Gerenciar">Descobertas</a>
             <a asp-controller="Lancamentos" asp-action="Gerenciar">Lançamentos</a>
             <a asp-controller="Astrofotografias" asp-action="Gerenciar">Astrofotografias</a>
-            <a asp-controller="Home" asp-action="Index">Ver site público</a>
         </nav>
-        <form class="sair-admin" asp-controller="Conta" asp-action="Logout" method="post"><button type="submit">Sair</button></form>
-    </aside>
 
-    <main class="principal-admin">
-        <div class="barra-superior-admin">
-            <div><span class="rotulo-superior">PAINEL ADMINISTRATIVO</span><h1>Visão geral</h1></div>
-            <a class="botao-secundario" asp-controller="Home" asp-action="Index">Ver site</a>
-        </div>
+        <a class="botao-site" asp-controller="Home" asp-action="Index">Ver site</a>
+    </header>
 
-        <section class="indicadores-admin" aria-label="Resumo do sistema">
-            <a class="indicador-admin" asp-controller="Descobertas" asp-action="Gerenciar"><span>Descobertas</span><strong>@Model.Descobertas</strong><small>@Model.Rascunhos rascunhos no total</small></a>
-            <a class="indicador-admin" asp-controller="Lancamentos" asp-action="Gerenciar"><span>Lançamentos</span><strong>@Model.Lancamentos</strong><small>Missões cadastradas</small></a>
-            <a class="indicador-admin" asp-controller="Astrofotografias" asp-action="Gerenciar"><span>Fotografias</span><strong>@Model.Astrofotografias</strong><small>Registros no acervo</small></a>
-            <div class="indicador-admin suave"><span>Conteúdos ativos</span><strong>@Model.ConteudosAtivos</strong><small>Visíveis no site público</small></div>
-        </section>
+    <div class="corpo-administrativo">
+        <aside class="barra-lateral-administrativa">
+            <div class="identidade-painel">
+                <img src="~/images/Logo.png" alt="" />
+                <strong>PAINEL ADMIN</strong>
+            </div>
 
-        <section class="grade-inferior-admin">
-            <div class="recentes-admin">
-                <div class="titulo-secao-admin"><div><span class="rotulo-superior">ATIVIDADE</span><h2>Conteúdos recentes</h2></div></div>
-                @if (Model.Recentes.Count == 0)
-                {
-                    <div class="vazio-admin">Ainda não existem conteúdos cadastrados.</div>
-                }
-                else
-                {
-                    <div class="lista-recentes">
-                        @foreach (var item in Model.Recentes)
-                        {
-                            <a class="item-recente" href="@item.Url"><span class="tipo-recente">@item.Tipo</span><strong>@item.Titulo</strong><time>@item.Data.ToString("dd/MM")</time></a>
-                        }
+            <nav class="menu-lateral-administrativo" aria-label="Menu do painel">
+                <a class="ativo" asp-controller="Administracao" asp-action="Index">Dashboard</a>
+                <a asp-controller="Descobertas" asp-action="Gerenciar">Descobertas</a>
+                <a asp-controller="Lancamentos" asp-action="Gerenciar">Lançamentos</a>
+                <a asp-controller="Astrofotografias" asp-action="Gerenciar">Astrofotografias</a>
+                <a asp-controller="Home" asp-action="Index">Ver site público</a>
+            </nav>
+
+            <form class="sair-administrativo" asp-controller="Conta" asp-action="Logout" method="post">
+                <button type="submit">Sair</button>
+            </form>
+        </aside>
+
+        <main class="conteudo-administrativo">
+            <div class="titulo-painel">
+                <h1>Visão geral</h1>
+            </div>
+
+            <section class="indicadores-administrativos" aria-label="Resumo do sistema">
+                <a class="cartao-indicador" asp-controller="Descobertas" asp-action="Gerenciar">
+                    <span>Descobertas</span>
+                    <strong>@Model.Descobertas</strong>
+                    <small>@Model.Rascunhos rascunhos</small>
+                </a>
+                <a class="cartao-indicador lilas" asp-controller="Lancamentos" asp-action="Gerenciar">
+                    <span>Lançamentos</span>
+                    <strong>@Model.Lancamentos</strong>
+                    <small>Missões cadastradas</small>
+                </a>
+                <a class="cartao-indicador" asp-controller="Astrofotografias" asp-action="Gerenciar">
+                    <span>Fotografias</span>
+                    <strong>@Model.Astrofotografias</strong>
+                    <small>Registros no acervo</small>
+                </a>
+                <div class="cartao-indicador lilas">
+                    <span>Conteúdos ativos</span>
+                    <strong>@Model.ConteudosAtivos</strong>
+                    <small>No site público</small>
+                </div>
+            </section>
+
+            <section class="area-inferior-administrativa">
+                <div class="conteudos-recentes">
+                    <div class="cabecalho-secao-administrativa">
+                        <h2>Conteúdos recentes</h2>
                     </div>
-                }
-            </div>
-            <div class="acoes-rapidas-admin">
-                <span class="rotulo-superior">ATALHOS</span><h2>Ações rápidas</h2>
-                <a class="acao-rapida" asp-controller="Descobertas" asp-action="Create">+ Nova descoberta</a>
-                <a class="acao-rapida" asp-controller="Lancamentos" asp-action="Create">+ Novo lançamento</a>
-                <a class="acao-rapida" asp-controller="Astrofotografias" asp-action="Create">+ Nova fotografia</a>
-            </div>
-        </section>
-    </main>
+
+                    @if (Model.Recentes.Count == 0)
+                    {
+                        <div class="estado-vazio-administrativo">Ainda não existem conteúdos cadastrados.</div>
+                    }
+                    else
+                    {
+                        <div class="lista-recentes">
+                            @foreach (var item in Model.Recentes)
+                            {
+                                <a class="item-recente" href="@item.Url">
+                                    <span class="tipo-recente">@item.Tipo</span>
+                                    <strong>@item.Titulo</strong>
+                                    <time>@item.Data.ToString("dd/MM")</time>
+                                </a>
+                            }
+                        </div>
+                    }
+                </div>
+
+                <div class="acoes-rapidas-administrativas">
+                    <h2>Ações rápidas</h2>
+                    <a class="acao-rapida" asp-controller="Descobertas" asp-action="Create">+ Nova descoberta</a>
+                    <a class="acao-rapida" asp-controller="Lancamentos" asp-action="Create">+ Novo lançamento</a>
+                    <a class="acao-rapida" asp-controller="Astrofotografias" asp-action="Create">+ Nova fotografia</a>
+                </div>
+            </section>
+        </main>
+    </div>
 </div>

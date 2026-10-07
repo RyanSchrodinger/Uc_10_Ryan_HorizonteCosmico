@@ -10,6 +10,9 @@
     var tipoConta = User.IsInRole(RolesSistema.Administrador) ? "Administrador" : "Usuário";
     var controllerAtual = ViewContext.RouteData.Values["controller"]?.ToString();
     var acaoAtual = ViewContext.RouteData.Values["action"]?.ToString();
+    var areaAdministrativa = controllerAtual == "Administracao"
+        || (User.IsInRole(RolesSistema.Administrador)
+            && (acaoAtual == "Gerenciar" || acaoAtual == "Create" || acaoAtual == "Edit"));
 }
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -24,6 +27,8 @@
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
+@if (!areaAdministrativa)
+{
 <header class="cabecalho-site">
     <nav class="navegacao-site" aria-label="Navegação principal">
         <div class="container-site conteudo-navegacao">
@@ -81,11 +86,14 @@
         </div>
     </nav>
 </header>
+}
 
 <main>
     @RenderBody()
 </main>
 
+@if (!areaAdministrativa)
+{
     <footer class="rodape">
 
         <div class="container">
@@ -236,6 +244,7 @@
         </div>
 
     </footer>
+}
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
